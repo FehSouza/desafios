@@ -30,10 +30,10 @@ const kangaroo = (x1, x2, v1, v2) => {
       if (positionKangaroo1 === positionKangaroo2) return (res = "YES");
     }
   } else {
-    return (res = "NO");
+    return res;
   }
 
-  return (res = "NO");
+  return res;
 };
 
 // kangaroo(4523, 9419, 8092, 8076); //YES
