@@ -58,14 +58,31 @@
 
 // console.log(listSub, listSum);
 
-const numbers = [15.5, 2.3, 1.1, 4.7];
+// const numbers = [15.5, 2.3, 1.1, 4.7];
 
-const roundedNumberList = numbers.map((num) => {
-  return Math.round(num);
-});
+// const roundedNumberList = numbers.map((num) => {
+//   return Math.round(num);
+// });
 
-const sum = roundedNumberList.reduce((acc, num) => {
-  return (acc += num);
-}, 0);
+// const sum = roundedNumberList.reduce((acc, num) => {
+//   return (acc += num);
+// }, 0);
+
+// console.log(sum);
+
+const rockets = [
+  { country: "Russia", launches: 32 },
+  { country: "US", launches: 23 },
+  { country: "China", launches: 16 },
+  { country: "Europe(ESA)", launches: 7 },
+  { country: "India", launches: 4 },
+  { country: "Japan", launches: 3 },
+];
+
+const sumOfLaunches = (acc, elem) => {
+  return (acc += elem.launches);
+};
+
+const sum = rockets.reduce(sumOfLaunches, 0);
 
 console.log(sum);
