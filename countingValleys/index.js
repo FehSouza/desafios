@@ -18,7 +18,6 @@ const countingValleys = (steps, path) => {
   const pathWithNumbers = listWithPath.map(transformeLetterInNumber);
 
   let accPath = 0;
-  let accValleys = 0;
 
   const transformeInListOfNumbers = (item) => {
     return (accPath += item);
@@ -26,16 +25,18 @@ const countingValleys = (steps, path) => {
 
   const listSum = pathWithNumbers.map(transformeInListOfNumbers);
 
-  if (listSum[0] < 0) accValleys++;
-
-  for (let i = 0; i < listSum.length; i++) {
-    if (listSum[i] === 0) {
-      const valueZero = listSum[i + 1];
-      if (valueZero < 0) accValleys++;
+  const valleysAccount = (acc, num, index, arr) => {
+    if (num < 0 && index === 0) acc++;
+    if (num === 0) {
+      const valueZero = arr[index + 1];
+      if (valueZero < 1) acc++;
     }
-  }
+    return acc;
+  };
 
-  console.log(accValleys);
+  const valleys = listSum.reduce(valleysAccount, 0);
+
+  console.log(valleys);
 };
 
 // countingValleys(8, "DDUUUUDD"); // 1
