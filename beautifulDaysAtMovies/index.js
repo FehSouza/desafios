@@ -19,7 +19,7 @@ const beautifulDays = (i, j, k) => {
   });
 
   const res = subtraction.reduce((acc, num) => {
-    if (num % k === 0) acc++;
+    if (num % k === 0) return acc + 1;
     return acc;
   }, 0);
 

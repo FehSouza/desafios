@@ -13,9 +13,7 @@ const viralAdvertising = (n) => {
     people = likes[i - 1] * 3;
   }
 
-  const sumLikes = likes.reduce((acc, num) => {
-    return (acc += num);
-  });
+  const sumLikes = likes.reduce((acc, num) => acc + num, 0);
 
   console.log(sumLikes);
 };
