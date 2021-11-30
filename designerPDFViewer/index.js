@@ -38,21 +38,47 @@ const designerPdfViewer = (h, word) => {
 
   const listOfLetters = word.split("");
 
-  const alphabetPositionList = listOfLetters.map((letter) => {
-    return alphabet.indexOf(letter);
-  });
+  // TIPO I DE RESOLUÇÃO :
+  // const alphabetPositionList = listOfLetters.map((letter) => {
+  //   return alphabet.indexOf(letter);
+  // });
 
-  const alphabetNumbersList = alphabetPositionList.map((position) => {
-    return h[position];
-  });
+  // const alphabetNumbersList = alphabetPositionList.map((position) => {
+  //   return h[position];
+  // });
 
-  alphabetNumbersList.sort((a, b) => a - b);
+  // alphabetNumbersList.sort((a, b) => a - b);
 
-  const calc =
-    alphabetNumbersList[alphabetPositionList.length - 1] *
-    alphabetPositionList.length;
+  // const calc =
+  //   alphabetNumbersList[alphabetPositionList.length - 1] *
+  //   alphabetPositionList.length;
 
-  return calc;
+  // console.log(calc);
+
+  // TIPO II DE RESOLUÇÃO:
+  // const alphabetPositionList = listOfLetters
+  //   .map((letter) => {
+  //     const position = alphabet.indexOf(letter);
+  //     return h[position];
+  //   })
+  //   .sort((a, b) => a - b);
+
+  // const calc =
+  //   alphabetPositionList[alphabetPositionList.length - 1] *
+  //   alphabetPositionList.length;
+
+  // console.log(calc);
+
+  //TIPO III DE RESOLUÇÃO:
+  const outlineSize = listOfLetters.reduce((acc, letter) => {
+    const position = alphabet.indexOf(letter);
+    const valueInH = h[position];
+    const calc = valueInH * listOfLetters.length;
+    if (calc >= acc) return calc;
+    return acc;
+  }, -Infinity);
+
+  console.log(outlineSize);
 };
 
 // designerPdfViewer(
