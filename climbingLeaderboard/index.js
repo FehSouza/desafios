@@ -8,21 +8,22 @@
 // for 70, 80 e 105, suas classificações após cada jogo serão 4º, 3º e 1º. Retornar [4, 3, 1].
 
 const climbingLeaderBoard = (ranked, player) => {
-  const arrRanked = new Set(ranked);
-  let arrRankedNew = [...arrRanked];
+  const rankedArr = ranked;
+  const listOfRanked = new Set(rankedArr.sort((a, b) => b - a));
+  let listOfRankedArr = [...listOfRanked];
   let positions = [];
 
-  for (const index in player) {
-    arrRankedNew.push(player[index]);
-    const listOfRanked = new Set(arrRankedNew.sort((a, b) => b - a));
-    const listOfRankedArr = [...listOfRanked];
-    positions.push(listOfRankedArr.indexOf(player[index]) + 1);
+  for (const elem of player) {
+    listOfRankedArr.push(elem);
+    let res = new Set(listOfRankedArr.sort((a, b) => b - a));
+    let resArr = [...res];
+    positions.push(resArr.indexOf(elem) + 1);
   }
 
   return positions;
 };
 
-// console.log(climbingLeaderBoard([100, 90, 90, 80], [70, 80, 105]), [4, 3, 1]);
+console.log(climbingLeaderBoard([100, 90, 90, 80], [70, 80, 105]), [4, 3, 1]);
 
 // console.log(
 //   climbingLeaderBoard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]),
@@ -30,10 +31,10 @@ const climbingLeaderBoard = (ranked, player) => {
 // );
 
 // console.time();
-console.log(
-  climbingLeaderBoard([100, 90, 90, 80, 75, 60], [50, 65, 77, 90, 102]),
-  [6, 5, 4, 2, 1]
-);
+// console.log(
+//   climbingLeaderBoard([100, 90, 90, 80, 75, 60], [50, 65, 77, 90, 102]),
+//   [6, 5, 4, 2, 1]
+// );
 // console.timeEnd();
 
 // console.log(
