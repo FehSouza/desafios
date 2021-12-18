@@ -5,8 +5,36 @@
 // mínima é 2.
 
 const minimumDistances = (a) => {
-  
+  const getPositionsOfDuplicates = (arrAnalysis) => {
+    let positionsDuplicates = [];
+    for (let i = 0; i < arrAnalysis.length; i++) {
+      const indexTemp = i;
+      const elemTemp = arrAnalysis[i];
+      for (let j = indexTemp + 1; j < arrAnalysis.length; j++) {
+        if (elemTemp === arrAnalysis[j]) {
+          positionsDuplicates.push(i, j);
+        }
+      }
+    }
+    return positionsDuplicates;
+  };
+
+  const positionsDuplicates = getPositionsOfDuplicates(a);
+
+  const calcDistance = (arrAnalysis) => {
+    let distance = [];
+    for (let i = 0; i < arrAnalysis.length; i += 2) {
+      distance.push(Math.abs(arrAnalysis[i] - arrAnalysis[i + 1]));
+    }
+    return distance;
+  };
+
+  const distances = calcDistance(positionsDuplicates);
+
+  if (distances.length === 0) return -1;
+  if (distances.length !== 0) return Math.min(...distances);
 };
 
 console.log(minimumDistances([3, 2, 1, 2, 3]), 2);
 console.log(minimumDistances([7, 1, 3, 4, 1, 7]), 3);
+console.log(minimumDistances([1, 2, 3, 4, 10]), -1);
