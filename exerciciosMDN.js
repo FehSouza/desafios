@@ -20,22 +20,22 @@
 // chooseName();
 
 // 1.2. Exercício função:
-const names = [
-  "Chris",
-  "Li Kang",
-  "Anne",
-  "Francesca",
-  "Mustafa",
-  "Tina",
-  "Bert",
-  "Jada",
-];
+// const names = [
+//   "Chris",
+//   "Li Kang",
+//   "Anne",
+//   "Francesca",
+//   "Mustafa",
+//   "Tina",
+//   "Bert",
+//   "Jada",
+// ];
 
-const getWordsCharacterLimit = (arr, limit) => {
-  const shortNames = arr.filter((elem) => {
-    if (elem.length < limit) return elem;
-  });
-  return shortNames;
-};
+// const getWordsCharacterLimit = (arr, limit) => {
+//   const shortNames = arr.filter((elem) => {
+//     if (elem.length < limit) return elem;
+//   });
+//   return shortNames;
+// };
 
-console.log(getWordsCharacterLimit(names, 5));
+// console.log(getWordsCharacterLimit(names, 5));
