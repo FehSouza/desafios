@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <span for="fname">First name: </span>
+        <input id="fname" type="text" />
+      </div>
+      <div>
+        <span for="lname">Last name: </span>
+        <input id="lname" type="text" />
+      </div>
+      <button id="submit">Enviar</button>
+    </form>
+
+    <p></p>
+
+    <script>
+      const form = document.querySelector("form");
+      const fname = document.getElementById("fname");
+      const lname = document.getElementById("lname");
+      const button = document.getElementById("submit");
+      const para = document.querySelector("p");
+
+      button.addEventListener("click", (event) => {
+        event.preventDefault(); // Cancela o evento se for cancelável, sem parar a propagação do mesmo
+        if (fname.value === "" || lname.value === "") {
+          para.textContent = "You need to fill in both names!";
+        } else {
+          para.textContent = `The first name is ${fname.value} and the last name is ${lname.value}`;
+        }
+        fname.value = "";
+        lname.value = "";
+      });
+    </script>
+  </body>
+</html>
