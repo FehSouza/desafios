@@ -9,9 +9,9 @@ $container.appendChild($canvas);
 
 const $ctx = $canvas.getContext("2d");
 
-let x = 30;
-let y = 30;
-const size = 30;
+const size = 60;
+let x = size;
+let y = size;
 
 const drawCircle = (x, y, size) => {
   $ctx.fillStyle = "white";
