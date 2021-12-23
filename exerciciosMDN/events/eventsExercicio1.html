@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./eventsExercicio1.css" />
+  </head>
+  <body>
+    <main class="container"></main>
+
+    <script>
+      const $container = document.querySelector(".container");
+
+      const $button = document.createElement("button");
+      $button.classList.add("button-off");
+      $button.textContent = `Machine is Off`;
+
+      $container.appendChild($button);
+
+      let situationMachine = false;
+
+      const toggle = (status) => {
+        if (status) situationMachine = !status;
+        if (status === false) situationMachine = !status;
+      };
+
+      const renderTextButton = (status) => {
+        if (status) {
+          $button.textContent = `Machine is On`;
+          $button.classList.add("button-on");
+        }
+        if (status === false) {
+          $button.textContent = `Machine is Off`;
+          $button.classList.remove("button-on");
+          $button.classList.add("button-off");
+        }
+      };
+
+      $button.addEventListener("click", () => {
+        toggle(situationMachine);
+        renderTextButton(situationMachine);
+      });
+    </script>
+  </body>
+</html>
