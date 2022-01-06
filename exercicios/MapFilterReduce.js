@@ -283,4 +283,8 @@ const list = nameFilms.reduce(
   }
 );
 
-console.log(list);
+// console.log(list);
+
+for (const index in a) {
+  console.log(index, a[index]);
+}
