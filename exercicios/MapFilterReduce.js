@@ -168,123 +168,149 @@ console.log(classification2);
 console.log(classification3); 
 */
 
-const a = {
-  "Harry Potter e a Pedra Filosofal": { livro: true, filme: true, ano: "2001" },
-  "Harry Potter e a Câmara Secreta": { livro: true, filme: true, ano: "2002" },
-  "Harry Potter e o Prisioneiro de Azkaban": {
-    livro: true,
-    filme: true,
-    ano: "2004",
-  },
-  "Harry Potter e o Cálice de Fogo": { livro: true, filme: true, ano: "2005" },
-  "Harry Potter e a Ordem da Fênix": { livro: true, filme: true, ano: "2007" },
-  "Os Contos de Beedle, o Bardo": { livro: true, filme: false, ano: "2008" },
-  "Harry Potter e o Enigma do Príncipe": {
-    livro: true,
-    filme: true,
-    ano: "2009",
-  },
-  "Harry Potter e as Relíquias da Morte: Parte 1": {
-    livro: true,
-    filme: true,
-    ano: "2010",
-  },
-  "Animais Fantásticos e Onde Habitam": {
-    livro: false,
-    filme: true,
-    ano: "2016",
-  },
-  "Animais Fantásticos: Os Crimes de Grindelwald": {
-    livro: false,
-    filme: true,
-    ano: "2018",
-  },
-  "Harry Potter e as Relíquias da Morte: Parte 2": {
-    livro: true,
-    filme: true,
-    ano: "2011",
-  },
-};
+// EXERCÍCIO 6:
 
-/* 
-const listArr = Object.entries(a);
+// const a = {
+//   "Harry Potter e a Pedra Filosofal": { livro: true, filme: true, ano: "2001" },
+//   "Harry Potter e a Câmara Secreta": { livro: true, filme: true, ano: "2002" },
+//   "Harry Potter e o Prisioneiro de Azkaban": {
+//     livro: true,
+//     filme: true,
+//     ano: "2004",
+//   },
+//   "Harry Potter e o Cálice de Fogo": { livro: true, filme: true, ano: "2005" },
+//   "Harry Potter e a Ordem da Fênix": { livro: true, filme: true, ano: "2007" },
+//   "Os Contos de Beedle, o Bardo": { livro: true, filme: false, ano: "2008" },
+//   "Harry Potter e o Enigma do Príncipe": {
+//     livro: true,
+//     filme: true,
+//     ano: "2009",
+//   },
+//   "Harry Potter e as Relíquias da Morte: Parte 1": {
+//     livro: true,
+//     filme: true,
+//     ano: "2010",
+//   },
+//   "Animais Fantásticos e Onde Habitam": {
+//     livro: false,
+//     filme: true,
+//     ano: "2016",
+//   },
+//   "Animais Fantásticos: Os Crimes de Grindelwald": {
+//     livro: false,
+//     filme: true,
+//     ano: "2018",
+//   },
+//   "Harry Potter e as Relíquias da Morte: Parte 2": {
+//     livro: true,
+//     filme: true,
+//     ano: "2011",
+//   },
+// };
 
-const list = listArr.reduce(
-  (acc, elem) => {
-    let res = {};
-    const elemAdd = elem[0];
-    const value = elem[1];
-    if (value.livro === true && value.filme === true)
-      res = {
-        ...acc,
-        livroFilme: [...acc.livroFilme, elemAdd],
-        temLivro: [...acc.temLivro, elemAdd],
-        temFilme: [...acc.temFilme, elemAdd],
-      };
-    if (value.livro === true && value.filme === false)
-      res = {
-        ...acc,
-        apenasLivro: [...acc.apenasLivro, elemAdd],
-        temLivro: [...acc.temLivro, elemAdd],
-      };
-    if (value.livro === false && value.filme === true)
-      res = {
-        ...acc,
-        apenasFilme: [...acc.apenasFilme, elemAdd],
-        temFilme: [...acc.temFilme, elemAdd],
-      };
-    return res;
-  },
-  {
-    livroFilme: [],
-    apenasLivro: [],
-    apenasFilme: [],
-    temLivro: [],
-    temFilme: [],
-  }
-);
+// /*
+// const listArr = Object.entries(a);
 
-console.log(list); 
-*/
-
-const nameFilms = Object.keys(a);
-
-const list = nameFilms.reduce(
-  (acc, elem) => {
-    let res = {};
-    const value = a[elem];
-    if (value.livro === true && value.filme === true)
-      res = {
-        ...acc,
-        livroFilme: [...acc.livroFilme, elem],
-        temLivro: [...acc.temLivro, elem],
-        temFilme: [...acc.temFilme, elem],
-      };
-    if (value.livro === true && value.filme === false)
-      res = {
-        ...acc,
-        apenasLivro: [...acc.apenasLivro, elem],
-        temLivro: [...acc.temLivro, elem],
-      };
-    if (value.livro === false && value.filme === true)
-      res = {
-        ...acc,
-        apenasFilme: [...acc.apenasFilme, elem],
-        temFilme: [...acc.temFilme, elem],
-      };
-    return res;
-  },
-  {
-    livroFilme: [],
-    apenasLivro: [],
-    apenasFilme: [],
-    temLivro: [],
-    temFilme: [],
-  }
-);
+// const list = listArr.reduce(
+//   (acc, elem) => {
+//     let res = {};
+//     const elemAdd = elem[0];
+//     const value = elem[1];
+//     if (value.livro === true && value.filme === true)
+//       res = {
+//         ...acc,
+//         livroFilme: [...acc.livroFilme, elemAdd],
+//         temLivro: [...acc.temLivro, elemAdd],
+//         temFilme: [...acc.temFilme, elemAdd],
+//       };
+//     if (value.livro === true && value.filme === false)
+//       res = {
+//         ...acc,
+//         apenasLivro: [...acc.apenasLivro, elemAdd],
+//         temLivro: [...acc.temLivro, elemAdd],
+//       };
+//     if (value.livro === false && value.filme === true)
+//       res = {
+//         ...acc,
+//         apenasFilme: [...acc.apenasFilme, elemAdd],
+//         temFilme: [...acc.temFilme, elemAdd],
+//       };
+//     return res;
+//   },
+//   {
+//     livroFilme: [],
+//     apenasLivro: [],
+//     apenasFilme: [],
+//     temLivro: [],
+//     temFilme: [],
+//   }
+// );
 
 // console.log(list);
+// */
 
-for (const index in a) {
-  console.log(index, a[index]);
-}
+// const nameFilms = Object.keys(a);
+
+// const list = nameFilms.reduce(
+//   (acc, elem) => {
+//     let res = {};
+//     const value = a[elem];
+//     if (value.livro === true && value.filme === true)
+//       res = {
+//         ...acc,
+//         livroFilme: [...acc.livroFilme, elem],
+//         temLivro: [...acc.temLivro, elem],
+//         temFilme: [...acc.temFilme, elem],
+//       };
+//     if (value.livro === true && value.filme === false)
+//       res = {
+//         ...acc,
+//         apenasLivro: [...acc.apenasLivro, elem],
+//         temLivro: [...acc.temLivro, elem],
+//       };
+//     if (value.livro === false && value.filme === true)
+//       res = {
+//         ...acc,
+//         apenasFilme: [...acc.apenasFilme, elem],
+//         temFilme: [...acc.temFilme, elem],
+//       };
+//     return res;
+//   },
+//   {
+//     livroFilme: [],
+//     apenasLivro: [],
+//     apenasFilme: [],
+//     temLivro: [],
+//     temFilme: [],
+//   }
+// );
+
+// // console.log(list);
+
+// for (const index in a) {
+//   console.log(index, a[index]);
+// }
+
+// EXERCÍCIO 7:
+
+const arr = [10, 50, 1, 2, 6, 8, 9, 11, 33, 41];
+
+const evenNumbers = arr.filter((elem) => elem % 2 === 0);
+
+const oddNumbers = arr.filter((elem) => elem % 2 !== 0);
+
+const evenAndOddNumbers = arr.reduce(
+  (acc, elem) => {
+    let isEven = elem % 2 === 0;
+    let result = {};
+
+    isEven
+      ? (result = { ...acc, even: [...acc.even, elem] })
+      : (result = { ...acc, odd: [...acc.odd, elem] });
+
+    return result;
+  },
+  { even: [], odd: [] }
+);
+
+console.log(evenAndOddNumbers);
