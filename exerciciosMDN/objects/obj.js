@@ -1,3 +1,5 @@
+// EXERCÍCIO 1:
+
 // let cat = {
 //   name: "Bertie",
 //   color: "branca",
@@ -15,6 +17,8 @@
 // console.log(`O nome do gato é ${catName} e a cor dele é ${cat["color"]}.`);
 
 // cat.greeting();
+
+// EXERCÍCIO 2:
 
 const band = {
   name: "Linkin Park",
@@ -36,6 +40,6 @@ const band = {
 
 let bandInfo = `${band.name} é uma banda ${band.nationality} de ${band.genre} que foi fundada no ano de ${band.formed}`;
 bandInfo += ` por ${band.members} membros. A banda ficou ativa até o ano de ${band.split}. O primeiro álbum lançado pelo`;
-bandInfo += ` ${band.name} foi o ${band.albums[0].name}, lançado no ano de ${band.albums[0].released}.`
+bandInfo += ` ${band.name} foi o ${band.albums[0].name}, lançado no ano de ${band.albums[0].released}.`;
 
-console.log(bandInfo)
+console.log(bandInfo);
