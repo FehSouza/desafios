@@ -2,48 +2,66 @@
 // encontre e imprima o número de letras 'a' que aparecem na string infinita. Exemplo: s = 'abcac'; n = 10.
 // A substring que consideramos é abcacabcac. Existem 4 ocorrências de 'a' na substring.
 
+// const repeatedString = (s, n) => {
+//   const countCharacters = n - s.length;
+//   let arr = [];
+//   let string = "";
+//   let numbersA = 0;
+
+//   if (s === "a") {
+//     return (numbersA = n);
+//   } else if (s.length === 1 && s !== "a") {
+//     return (numbersA = 0);
+//   } else if (s.length === n) {
+//     return (numbersA = s.split("a").length - 1);
+//   } else {
+//     const repeatString = (string, numLeft) => {
+//       if (numLeft < 0) {
+//         for (let i = 0; i <= Math.abs(numLeft); i++) arr.push(string[i]);
+//       }
+//       if (numLeft > 0) {
+//         for (let i = 0; i < numLeft; i++) {
+//           arr.push(string[i % string.length]);
+//         }
+//       }
+//     };
+
+//     const convertArrayToString = (arr) => {
+//       string = arr.join("");
+//     };
+
+//     const calcA = (string1, string2) => {
+//       if (string2.length < string1.length)
+//         numbersA = string2.split("a").length - 1;
+//       if (string2.length >= string1.length)
+//         numbersA =
+//           string1.split("a").length - 1 + (string2.split("a").length - 1);
+//     };
+
+//     repeatString(s, countCharacters);
+//     convertArrayToString(arr);
+//     calcA(s, string);
+//   }
+
+//   return numbersA;
+// };
+
 const repeatedString = (s, n) => {
-  const countCharacters = n - s.length;
-  let arr = [];
-  let string = "";
-  let numbersA = 0;
+  const wordSize = s.length;
+  const quantityOfWords = Math.floor(n / wordSize);
+  const quantityOfRestLetters = n - wordSize * quantityOfWords;
 
-  if (s === "a") {
-    return (numbersA = n);
-  } else if (s.length === 1 && s !== "a") {
-    return (numbersA = 0);
-  } else if (s.length === n) {
-    return (numbersA = s.split("a").length - 1);
-  } else {
-    const repeatString = (string, numLeft) => {
-      if (numLeft < 0) {
-        for (let i = 0; i <= Math.abs(numLeft); i++) arr.push(string[i]);
-      }
-      if (numLeft > 0) {
-        for (let i = 0; i < numLeft; i++) {
-          arr.push(string[i % string.length]);
-        }
-      }
-    };
+  let substring = "";
+  if (quantityOfRestLetters > 0) substring = s.slice(0, quantityOfRestLetters);
 
-    const convertArrayToString = (arr) => {
-      string = arr.join("");
-    };
+  let quantityStringA = 0;
+  for (const item of s) if (item === "a") quantityStringA++;
 
-    const calcA = (string1, string2) => {
-      if (string2.length < string1.length)
-        numbersA = string2.split("a").length - 1;
-      if (string2.length >= string1.length)
-        numbersA =
-          string1.split("a").length - 1 + (string2.split("a").length - 1);
-    };
+  let quantitySubstringA = 0;
+  for (const item of substring) if (item === "a") quantitySubstringA++;
 
-    repeatString(s, countCharacters);
-    convertArrayToString(arr);
-    calcA(s, string);
-  }
-
-  return numbersA;
+  const quantityTotal = quantityStringA * quantityOfWords + quantitySubstringA;
+  return quantityTotal;
 };
 
 console.log(repeatedString("abcac", 10), 4);
