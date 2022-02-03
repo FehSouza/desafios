@@ -17,6 +17,35 @@
 // tantos assuntos, então é devolvido [5, 1].
 
 const acmTeam = (topic) => {
+  let maxPoint = 0;
+  let quantityTeam = 0;
+
+  const compareParticipants = (part1, part2) => {
+    let points = 0;
+    for (let i = 0; i < part1.length; i++) {
+      if (part1[i] === "1" || part2[i] === "1") points++;
+    }
+    return points;
+  };
+
+  for (let i = 0; i < topic.length; i++) {
+    for (let j = i + 1; j < topic.length; j++) {
+      const participant1 = topic[i];
+      const participant2 = topic[j];
+      const points = compareParticipants(participant1, participant2);
+      if (points > maxPoint) {
+        maxPoint = points;
+        quantityTeam = 0;
+      }
+      if (points === maxPoint) quantityTeam++;
+    }
+  }
+
+  return [maxPoint, quantityTeam];
+};
+
+/*
+const acmTeam = (topic) => {
   const listOfParticipants = [];
 
   for (let i = 0; i < topic.length; i++) {
@@ -28,55 +57,120 @@ const acmTeam = (topic) => {
 
   const pointsForTeam = listOfParticipants.map((elem) => {
     let acc = 0;
+    const concat = [...topic[elem[0]], ...topic[elem[1]]];
+    for (let i = 0; i < concat.length / 2; i++) {
+      if (concat[i] === "1" || concat[concat.length / 2 + i] === "1") acc++;
+    }
+    return acc;
+  });
+
+  const maxPoint = Math.max(...pointsForTeam);
+
+  const res = pointsForTeam.reduce((acc, elem) => {
+    if (elem === maxPoint) acc = acc + 1;
+    return acc;
+  }, 0);
+
+  return [maxPoint, res];
+};
+*/
+
+/*
+const acmTeam = (topic) => {
+  const listOfPoints = [];
+
+  for (let i = 0; i < topic.length; i++) {
+    const participantTemp = i;
+    for (let j = i + 1; j < topic.length; j++) {
+      const concat = [...topic[participantTemp], ...topic[j]];
+      let acc = 0;
+      for (let i = 0; i < concat.length / 2; i++) {
+        if (
+          Number(concat[i]) == 1 ||
+          Number(concat[concat.length / 2 + i]) == 1
+        )
+          acc++;
+      }
+      listOfPoints.push(acc);
+    }
+  }
+
+  const maxPoint = Math.max(...listOfPoints);
+
+  const res = listOfPoints.reduce((acc, elem) => {
+    if (elem == maxPoint) acc = acc + 1;
+    return acc;
+  }, 0);
+
+  return [maxPoint, res];
+};
+*/
+
+/*
+const acmTeam = (topic) => {
+  const listOfPoints = [];
+
+  for (let i = 0; i < topic.length; i++) {
+    const participantTemp = i;
+    for (let j = i + 1; j < topic.length; j++) {
+      const sum = String(Number(topic[participantTemp]) + Number(topic[j]));
+
+      let acc = 0;
+      for (const item of sum) {
+        if (item != "0") acc++;
+      }
+      listOfPoints.push(acc);
+    }
+  }
+
+  const maxPoint = Math.max(...listOfPoints);
+
+  const res = listOfPoints.reduce((acc, elem) => {
+    if (elem == maxPoint) acc = acc + 1;
+    return acc;
+  }, 0);
+
+  return [maxPoint, res];
+};
+*/
+
+/*
+const acmTeam = (topic) => {
+  const listOfParticipants = [];
+
+  const createTeam = (participants) => {
+    for (let i = 0; i < participants.length; i++) {
+      const participantTemp = i;
+      for (let j = i + 1; j < participants.length; j++) {
+        listOfParticipants.push([participantTemp, j]);
+      }
+    }
+  };
+
+  createTeam(topic);
+
+  const pointsForTeam = listOfParticipants.map((elem) => {
+    let acc = 0;
     for (let i = 0; i < topic[elem[0]]; i++) {
       if (topic[elem[0]][i] === "1" || topic[elem[1]][i] === "1") acc++;
     }
     return acc;
   });
 
+  const getHigherScore = (listOfPoints) => {
+    return Math.max(...listOfPoints);
+  };
+
+  getHigherScore(pointsForTeam);
+
   const countTeams = pointsForTeam.reduce((acc, elem) => {
-    if (elem === Math.max(...pointsForTeam)) acc = acc + 1;
+    if (elem === getHigherScore(pointsForTeam)) acc = acc + 1;
     return acc;
   }, 0);
 
-  return [Math.max(...pointsForTeam), countTeams];
+  return [getHigherScore(pointsForTeam), countTeams];
 };
+*/
 
-// const acmTeam = (topic) => {
-//   const listOfParticipants = [];
-
-//   const createTeam = (participants) => {
-//     for (let i = 0; i < participants.length; i++) {
-//       const participantTemp = i;
-//       for (let j = i + 1; j < participants.length; j++) {
-//         listOfParticipants.push([participantTemp, j]);
-//       }
-//     }
-//   };
-
-//   createTeam(topic);
-
-//   const pointsForTeam = listOfParticipants.map((elem) => {
-//     let acc = 0;
-//     for (let i = 0; i < topic[elem[0]]; i++) {
-//       if (topic[elem[0]][i] === "1" || topic[elem[1]][i] === "1") acc++;
-//     }
-//     return acc;
-//   });
-
-//   const getHigherScore = (listOfPoints) => {
-//     return Math.max(...listOfPoints);
-//   };
-
-//   getHigherScore(pointsForTeam);
-
-//   const countTeams = pointsForTeam.reduce((acc, elem) => {
-//     if (elem === getHigherScore(pointsForTeam)) acc = acc + 1;
-//     return acc;
-//   }, 0);
-
-//   return [getHigherScore(pointsForTeam), countTeams];
-// };
-
-// console.log(acmTeam(["10101", "11110", "00010"]), [5, 1]);
+console.log(acmTeam(["10101", "11110", "00010"]), [5, 1]);
 console.log(acmTeam(["10101", "11100", "11010", "00101"]), [5, 2]);
